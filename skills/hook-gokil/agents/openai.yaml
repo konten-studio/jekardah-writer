@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hook Gokil"
+  short_description: "Create sharp, truthful stop-scroll hooks"
+  default_prompt: "Use $hook-gokil to generate and select sharp, truthful hook options for this draft."

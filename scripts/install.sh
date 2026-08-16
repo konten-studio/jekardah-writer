@@ -61,7 +61,7 @@ fi
 
 dest=$base/$rel
 manifest=$dest/.jekardah-writer-install.tsv
-for skill in review-rewrite-content wtf-hook no-ai-slop tutur-jabodetabek-urban; do
+for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
   target=$dest/$skill
   [ ! -e "$target" ] && [ ! -L "$target" ] || {
     echo "Refusing to overwrite existing path: $target" >&2
@@ -81,14 +81,14 @@ printf 'jekardah-writer-v1\t%s\t%s\t%s\n' "$AGENT" "$SCOPE" "$METHOD" >> "$manif
 complete=0
 cleanup_partial() {
   [ "$complete" -eq 1 ] && return
-  for owned_skill in review-rewrite-content wtf-hook no-ai-slop tutur-jabodetabek-urban; do
+  for owned_skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
     owned_target=$dest/$owned_skill
     if [ -L "$owned_target" ]; then unlink "$owned_target"; elif [ -d "$owned_target" ]; then find "$owned_target" -depth -delete; fi
   done
   [ ! -f "$manifest_tmp" ] || unlink "$manifest_tmp"
 }
 trap cleanup_partial EXIT HUP INT TERM
-for skill in review-rewrite-content wtf-hook no-ai-slop tutur-jabodetabek-urban; do
+for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
   source=$ROOT/skills/$skill
   target=$dest/$skill
   if [ "$METHOD" = copy ]; then

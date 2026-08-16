@@ -1,4 +1,0 @@
-interface:
-  display_name: "WTF Hook"
-  short_description: "Create sharp, truthful stop-scroll hooks"
-  default_prompt: "Use $wtf-hook to generate and select truthful WTF hook options for this draft."

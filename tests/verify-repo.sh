@@ -11,7 +11,7 @@ for file in \
   [ -f "$ROOT/$file" ] || fail "missing $file"
 done
 
-for skill in review-rewrite-content wtf-hook no-ai-slop tutur-jabodetabek-urban; do
+for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
   [ -f "$ROOT/skills/$skill/SKILL.md" ] || fail "missing canonical skill $skill"
 done
 
@@ -43,9 +43,9 @@ assert 1 <= len(prompts) <= 3, "Codex defaultPrompt must contain 1-3 prompts"
 assert all(isinstance(p, str) and 0 < len(p) <= 128 for p in prompts)
 PY
 
-[ ! -e "$ROOT/skills/wtf-hook/E-book WTF HOOK.md" ] || fail "source ebook must not be published"
-if find "$ROOT/skills/wtf-hook" -type f -size +250k | grep -q .; then
-  fail "unexpected large source artifact in wtf-hook"
+[ ! -e "$ROOT/skills/hook-gokil/E-book WTF HOOK.md" ] || fail "source ebook must not be published"
+if find "$ROOT/skills/hook-gokil" -type f -size +250k | grep -q .; then
+  fail "unexpected large source artifact in hook-gokil"
 fi
 if rg -n '/home/|/Users/|ai-builders-id-kelas-agent|documents/\[2\] Areas/konten-studio-skills' \
   "$ROOT" -g '!tests/verify-repo.sh' >/dev/null; then

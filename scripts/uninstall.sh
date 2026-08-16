@@ -10,7 +10,14 @@ validate_manifest
 # Validate every entry before deleting any, so a damaged install cannot be half-removed.
 {
   IFS= read -r _header
-  while IFS="$(printf '\t')" read -r skill target _method expected; do
+  while IFS="$(printf '\t')" read -r skill target method expected; do
+    if [ "$method" = symlink ]; then
+      [ -L "$target" ] || {
+        echo "Installed skill symlink is missing or was replaced: $skill. Nothing was removed." >&2
+        exit 1
+      }
+      continue
+    fi
     actual=$(tree_digest "$target") || {
       echo "Installed skill is missing: $skill. Nothing was removed; restore from backup or move remaining files manually." >&2
       exit 1

@@ -12,7 +12,7 @@ check_agent() {
   home="$TMP/$agent-home"
   mkdir -p "$home"
   HOME="$home" "$ROOT/scripts/install.sh" --agent "$agent" --scope user --copy >/dev/null
-  for skill in review-rewrite-content wtf-hook no-ai-slop tutur-jabodetabek-urban; do
+  for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
     [ -f "$home/$expected/$skill/SKILL.md" ] || fail "$agent did not install $skill"
   done
   HOME="$home" "$ROOT/scripts/verify-install.sh" --agent "$agent" --scope user >/dev/null
@@ -30,12 +30,12 @@ check_agent copilot .copilot/skills
 check_agent gemini .gemini/skills
 
 home="$TMP/safety-home"
-mkdir -p "$home/.claude/skills/wtf-hook"
-printf 'user data\n' > "$home/.claude/skills/wtf-hook/keep.txt"
+mkdir -p "$home/.claude/skills/hook-gokil"
+printf 'user data\n' > "$home/.claude/skills/hook-gokil/keep.txt"
 if HOME="$home" "$ROOT/scripts/install.sh" --agent claude --scope user --copy >/dev/null 2>&1; then
   fail "installer overwrote an unmanaged skill"
 fi
-[ -f "$home/.claude/skills/wtf-hook/keep.txt" ] || fail "unmanaged file was changed"
+[ -f "$home/.claude/skills/hook-gokil/keep.txt" ] || fail "unmanaged file was changed"
 
 dry="$TMP/dry-home"
 mkdir -p "$dry"
@@ -56,7 +56,7 @@ if HOME="$modified" "$ROOT/scripts/uninstall.sh" --agent claude --scope user >"$
 fi
 grep -Eqi 'modified|backup|recover' "$TMP/modified.out" || fail "modified-install error lacks recovery guidance"
 [ -f "$modified/.claude/skills/no-ai-slop/SKILL.md" ] || fail "modified skill was deleted"
-[ -f "$modified/.claude/skills/wtf-hook/SKILL.md" ] || fail "uninstall partially deleted before detecting modification"
+[ -f "$modified/.claude/skills/hook-gokil/SKILL.md" ] || fail "uninstall partially deleted before detecting modification"
 
 tampered="$TMP/tampered-home"
 mkdir -p "$tampered"
@@ -87,12 +87,24 @@ if HOME="$unsafe" "$ROOT/scripts/install.sh" --agent gemini --scope project --pr
 fi
 
 partial="$TMP/partial-home"
-mkdir -p "$partial/.cursor/skills/wtf-hook"
-printf 'existing\n' > "$partial/.cursor/skills/wtf-hook/user.txt"
+mkdir -p "$partial/.cursor/skills/hook-gokil"
+printf 'existing\n' > "$partial/.cursor/skills/hook-gokil/user.txt"
 if HOME="$partial" "$ROOT/scripts/install.sh" --agent cursor --scope user --copy >/dev/null 2>&1; then
   fail "installer accepted a partial pre-existing install"
 fi
 [ ! -e "$partial/.cursor/skills/no-ai-slop" ] || fail "failed preflight left a partial installation"
 [ ! -e "$partial/.cursor/skills/.jekardah-writer-install.tsv" ] || fail "failed preflight left a manifest"
+
+# A user who pulls the rename may have a now-broken legacy wtf-hook symlink.
+legacy="$TMP/legacy-home"
+mkdir -p "$legacy"
+HOME="$legacy" "$ROOT/scripts/install.sh" --agent codex --scope user >/dev/null
+mv "$legacy/.codex/skills/hook-gokil" "$legacy/.codex/skills/wtf-hook"
+sed -i 's#hook-gokil#wtf-hook#g' "$legacy/.codex/skills/.jekardah-writer-install.tsv"
+unlink "$legacy/.codex/skills/wtf-hook"
+ln -s "$ROOT/skills/wtf-hook" "$legacy/.codex/skills/wtf-hook"
+HOME="$legacy" "$ROOT/scripts/uninstall.sh" --agent codex --scope user >/dev/null
+[ ! -L "$legacy/.codex/skills/wtf-hook" ] || fail "legacy wtf-hook symlink survived migration uninstall"
+[ ! -e "$legacy/.codex/skills/review-rewrite-content" ] || fail "legacy uninstall left managed skills"
 
 printf 'PASS: installer fixtures\n'

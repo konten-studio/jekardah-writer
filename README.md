@@ -36,7 +36,7 @@ bersihin pola AI, baru masukin voice Jabodetabek secukupnya.
 | Skill | Kerjaan |
 |---|---|
 | `review-rewrite-content` | Pemimpin redaksi: pilih mode, kunci fakta, atur handoff, jalankan QA |
-| `wtf-hook` | Cari hook yang bikin berhenti scroll tanpa ngarang payoff |
+| `hook-gokil` | Cari hook yang bikin berhenti scroll tanpa ngarang payoff |
 | `no-ai-slop` | Buang pembukaan kaleng, hiperbola, dan ritme yang terlalu mesin |
 | `tutur-jabodetabek-urban` | Kasih register lokal tanpa cosplay slang atau stereotip wilayah |
 
@@ -73,7 +73,7 @@ nama, angka, atribusi, maksud CTA, link, serta batas kepastian sumber.
    ▼
  [FACT LOCK] ── nama · angka · klaim · CTA · struktur
    │
-   ├──▶ WTF HOOK ──────▶ angle + payoff
+   ├──▶ HOOK GOKIL ──────▶ angle + payoff
    ├──▶ NO AI SLOP ────▶ konkret + ritmis + bersih
    └──▶ TUTUR URBAN ───▶ register Jabodetabek
    │
@@ -157,6 +157,22 @@ scope agar instalasi hanya berlaku di satu repo:
 Installer menolak menimpa folder skill yang tidak dikelolanya. Uninstaller hanya
 menghapus path yang tercatat di manifest instalasi milik Jekardah Writer.
 
+### Migrasi dari `wtf-hook`
+
+Mulai versi ini, skill ID `wtf-hook` berubah menjadi `hook-gokil`. Kalau lo
+sudah memasang versi lama, pull repository terbaru, bersihkan manifest lama,
+lalu install ulang:
+
+```bash
+git pull
+./scripts/uninstall.sh --agent codex --scope user
+./scripts/install.sh --agent codex --scope user
+./scripts/verify-install.sh --agent codex --scope user
+```
+
+Ganti `codex` dengan agent yang sebelumnya lo install. Uninstaller tetap bisa
+mengenali manifest lama dan hanya melepas path yang tercatat di sana.
+
 ### Native plugin
 
 Repo ini juga menyertakan `.claude-plugin/plugin.json` dan
@@ -230,7 +246,7 @@ setup lokal yang eksplisit.
 [RamaAditya49/tutur](https://github.com/RamaAditya49/tutur). Adaptasi
 `tutur-jabodetabek-urban` mempertahankan lisensi MIT upstream dan
 copyright Rama Aditya; detailnya ada di [Third-Party Notices](THIRD_PARTY_NOTICES.md).
-`wtf-hook` memakai referensi ringkas yang sudah didistilasi; dokumen sumber
+`hook-gokil` memakai referensi ringkas yang sudah didistilasi; dokumen sumber
 privat tidak dibundel atau dipublikasikan.
 
 ## Lisensi

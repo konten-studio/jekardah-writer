@@ -1,9 +1,9 @@
 ---
-name: wtf-hook
+name: hook-gokil
 description: Use when a draft, script, post, carousel, thread, headline, or content idea needs a stronger Indonesian or multilingual opening, multiple stop-scroll hook options, a WTF or killer hook, hook diagnosis, candidate selection, or a truth-preserving rewrite.
 ---
 
-# WTF Hook
+# Hook Gokil
 
 Create cognitive dissonance without breaking the content's factual contract. A strong hook makes the audience ask "kok bisa?"; the body must answer honestly.
 
@@ -51,7 +51,7 @@ For analysis-only requests, diagnose the current hook, identify the missed meani
 
 ## Composition contract
 
-When an orchestrating skill combines `wtf-hook` with tone, platform, translation, or anti-slop skills, use this contract:
+When an orchestrating skill combines `hook-gokil` with tone, platform, translation, or anti-slop skills, use this contract:
 
 - **Input owned by orchestrator:** source draft/context, fact lock, audience/platform constraints, requested output scope, and style instructions.
 - **This skill owns:** hook angle, type, emotional pillar, candidate set, ranking, selected hook, and the explicit body-payoff obligation.
