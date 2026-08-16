@@ -1,6 +1,6 @@
 <div align="center">
 
-<p><small><img src="assets/konten-studio-logo.png" width="18" align="middle" alt="Konten Studio logo"> konten.studio presents</small></p>
+<p><img src="assets/konten-studio-presents.png" height="18" alt="Konten Studio presents"></p>
 
 ```text
       ██╗███████╗██╗  ██╗ █████╗ ██████╗ ██████╗  █████╗ ██╗  ██╗
