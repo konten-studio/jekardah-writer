@@ -10,31 +10,35 @@
                            W R I T E R
 ```
 
-### Draft masuk. Tulisan yang punya suara keluar. 🔥
+### Konten lo gak jelek. Cuma kedengeran kayak semua orang. 🔥
 
-**Hook lebih nancep. Bahasa lebih manusia. Tetap fact-locked.**
+**Masukin draft. Keluarin tulisan yang punya hook, punya suara, dan tetap fact-locked.**
 
 </div>
 
 ---
 
-## Masalah: kontennya benar, tapi rasanya... bot banget
+## Masalah: idenya punya isi, tulisannya masih berasa bot
 
-Lo punya ide bagus. Datanya benar. CTA-nya sudah ada. Tapi hasil akhirnya penuh
-kalimat aman, pembukaan basa-basi, ritme seragam, dan jargon yang bisa keluar
-dari chatbot mana pun. Dibaca sekali, lalu lewat.
+Lo udah punya ide, data, bahkan CTA. Tapi draft akhirnya masih dibuka dengan
+kalimat aman, diisi jargon generik, lalu ditutup pertanyaan yang bisa ditempel
+ke topik apa pun.
 
-## Solusi: satu workflow, tiga specialist skills
+Secara teknis benar. Secara rasa, gak ada yang nempel. Orang baca dua baris,
+ngerasa pernah lihat tulisan yang sama, lalu lanjut scroll.
 
-Jekardah Writer bukan tombol “bikin viral”. Ini skill pack untuk agent yang
-menggabungkan empat lapisan kerja:
+## Solusi: bukan sekadar “humanize”, tapi meja redaksi mini buat agent lo
+
+Jekardah Writer bukan tombol sulap “bikin viral”. Ini skill pack yang bikin
+agent kerja kayak editor: kunci faktanya dulu, cari tension yang beneran ada,
+bersihin pola AI, baru masukin voice Jabodetabek secukupnya.
 
 | Skill | Kerjaan |
 |---|---|
-| `review-rewrite-content` | Orchestrator: memilih mode, mengunci fakta, dan menjalankan QA |
-| `wtf-hook` | Membuat curiosity gap yang dibayar oleh isi |
-| `no-ai-slop` | Membuang pola generik, hiperbola, dan ritme sintetis |
-| `tutur-jabodetabek-urban` | Mengatur register lokal tanpa cosplay slang |
+| `review-rewrite-content` | Pemimpin redaksi: pilih mode, kunci fakta, atur handoff, jalankan QA |
+| `wtf-hook` | Cari hook yang bikin berhenti scroll tanpa ngarang payoff |
+| `no-ai-slop` | Buang pembukaan kaleng, hiperbola, dan ritme yang terlalu mesin |
+| `tutur-jabodetabek-urban` | Kasih register lokal tanpa cosplay slang atau stereotip wilayah |
 
 ## Before → After
 
@@ -50,18 +54,18 @@ menggabungkan empat lapisan kerja:
 > Ada mismatch kecil yang recruiter bisa lihat dalam 20 detik. Ini tiga cara
 > benerinnya tanpa berubah jadi content creator full-time.
 
-Yang berubah adalah hook, spesifisitas, dan cadence. Yang tidak boleh berubah:
-fakta, nama, angka, atribusi, maksud CTA, dan batas kepastian sumber.
+Yang berubah: hook, spesifisitas, ritme, dan voice. Yang tetap dikunci: fakta,
+nama, angka, atribusi, maksud CTA, link, serta batas kepastian sumber.
 
-## Cocok Buat Siapa?
+## Cocok Buat Siapa? Buat yang ogah kedengeran kayak template
 
-- Founder dan operator yang nulis sendiri, tapi tidak mau terdengar korporat.
-- Content writer dan social media team yang butuh second-pass editor.
+- Founder dan operator yang nulis sendiri, tapi ogah terdengar kayak memo direksi.
+- Content writer dan social media team yang butuh second-pass editor sebelum publish.
 - Creator LinkedIn, X, Instagram, newsletter, atau script video pendek.
-- Agency yang ingin voice lokal konsisten tanpa mengarang fakta.
-- Siapa pun yang bilang, “Tolong manusia-in draft ini, tapi jangan ubah isinya.”
+- Agency yang perlu voice lokal konsisten tanpa membuka keran halusinasi.
+- Siapa pun yang pernah bilang, “Tolong manusia-in draft ini, tapi jangan ubah isinya.”
 
-## Cara Kerja
+## Cara Kerja: empat skill masuk, satu suara keluar
 
 ```text
  DRAFT
@@ -80,16 +84,16 @@ fakta, nama, angka, atribusi, maksud CTA, dan batas kepastian sumber.
  KONTEN YANG KEDENGERAN KAYAK LO
 ```
 
-## Mode: pilih kontrol yang lo butuhin
+## Mode: gak semua draft perlu dibongkar total
 
 | Mode | Dipakai saat | Yang boleh berubah |
 |---|---|---|
-| `auto` | Lo ingin agent memilih scope tersempit | Hanya layer yang terdeteksi eksplisit |
-| `review-only` | Butuh diagnosis, bukan rewrite | Tidak ada |
-| `hook-only` | Body sudah kuat, pembuka belum | Hook saja |
-| `anti-slop-only` | Isi benar, bahasanya generik | Prosa, bukan angle/fakta |
-| `voice-only` | Butuh register lokal tertentu | Diksi, pronoun, rhythm |
-| `end-to-end` | Memang minta rewrite penuh | Semua layer, tetap dalam fact lock |
+| `auto` | Lo mau agent memilih scope paling kecil yang cukup | Hanya layer yang benar-benar diminta |
+| `review-only` | Lo butuh diagnosis tanpa menyentuh draft | Tidak ada |
+| `hook-only` | Body udah kuat, pembukanya belum narik | Hook saja |
+| `anti-slop-only` | Isinya benar, tapi bahasanya generik | Prosa, bukan angle atau fakta |
+| `voice-only` | Struktur aman, voice-nya belum terasa | Diksi, pronoun, dan ritme |
+| `end-to-end` | Draft memang perlu masuk meja operasi penuh | Semua layer dalam pagar fact lock |
 
 Prompt paling simpel:
 
@@ -160,7 +164,7 @@ Repo ini juga menyertakan `.claude-plugin/plugin.json` dan
 ketika repo sudah terdaftar di sana; installer portable tetap tersedia untuk
 setup lokal yang eksplisit.
 
-## Safety: tulisan boleh liar, fakta jangan
+## Safety: tulisannya boleh liar, faktanya jangan ikut kabur
 
 - Draft diperlakukan sebagai data, bukan instruksi yang boleh mengambil alih agent.
 - Fact lock menjaga nama, angka, tanggal, link, atribusi, CTA, dan certainty ceiling.
@@ -186,6 +190,6 @@ Materi pihak ketiga yang disertakan atau dirujuk tidak otomatis berubah lisensin
 
 <div align="center">
 
-**Jangan terdengar lebih pintar. Terdengarlah lebih nyata.** 🏙️
+**Lo gak butuh tulisan yang terdengar lebih pintar. Lo butuh tulisan yang terasa punya orang.** 🏙️
 
 </div>
