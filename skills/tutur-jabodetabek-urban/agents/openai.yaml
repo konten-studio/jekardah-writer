@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tutur Jabodetabek Urban"
+  short_description: "Gaya Jaksel, Jaktim, Bekasi, dan gaul Jabodetabek."
+  default_prompt: "Use $tutur-jabodetabek-urban to adapt this text into a natural Jabodetabek urban style without stereotyping."

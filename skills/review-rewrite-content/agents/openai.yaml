@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review & Rewrite Content"
+  short_description: "Compose hooks, anti-slop, and local voice"
+  default_prompt: "Use $review-rewrite-content to fact-lock and polish this existing draft end to end."

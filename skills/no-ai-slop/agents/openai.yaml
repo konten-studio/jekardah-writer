@@ -1,0 +1,4 @@
+interface:
+  display_name: "No AI Slop"
+  short_description: "Remove generic AI prose without losing voice"
+  default_prompt: "Use $no-ai-slop to review and rewrite this draft without changing its facts or voice."
