@@ -1,5 +1,7 @@
 <div align="center">
 
+<p><img src="assets/konten-studio-logo.png" width="18" alt="Konten Studio logo"> <sub>konten.studio presents</sub></p>
+
 ```text
       ██╗███████╗██╗  ██╗ █████╗ ██████╗ ██████╗  █████╗ ██╗  ██╗
       ██║██╔════╝██║ ██╔╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║  ██║
