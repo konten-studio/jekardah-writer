@@ -156,21 +156,6 @@ scope kalau instalasinya cuma boleh apply ke satu repo:
 Installer bakal refuse folder skill yang bukan dia manage. Uninstaller juga cuma
 hapus path yang tercatat di installation manifest Jekardah Writer.
 
-### Migrasi dari `wtf-hook`
-
-Mulai versi ini, skill ID `wtf-hook` berubah jadi `hook-gokil`. Kalau lo udah
-install versi lama, pull repo terbaru, bersihin manifest lama, lalu reinstall:
-
-```bash
-git pull
-./scripts/uninstall.sh --agent codex --scope user
-./scripts/install.sh --agent codex --scope user
-./scripts/verify-install.sh --agent codex --scope user
-```
-
-Ganti `codex` dengan agent yang sebelumnya lo install. Uninstaller masih bisa
-ngenalin manifest lama dan cuma melepas path yang memang tercatat di sana.
-
 ### Native plugin
 
 Repo ini juga include `.claude-plugin/plugin.json` dan
