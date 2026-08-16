@@ -198,11 +198,3 @@ dibundel atau dipublikasikan.
 
 Kode dan instruksi original di repo ini dirilis dengan [MIT License](LICENSE).
 Materi pihak ketiga yang disertakan atau dirujuk tetap ikut lisensi asalnya.
-
----
-
-<div align="center">
-
-**Lo gak butuh tulisan yang terdengar lebih pintar. Lo butuh tulisan yang terasa punya orang.** 🏙️
-
-</div>
