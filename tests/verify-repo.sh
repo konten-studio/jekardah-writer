@@ -11,15 +11,19 @@ for file in \
   [ -f "$ROOT/$file" ] || fail "missing $file"
 done
 
-for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
+for skill in review-rewrite-content storytelling-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
   [ -f "$ROOT/skills/$skill/SKILL.md" ] || fail "missing canonical skill $skill"
+done
+
+for reference in story-lock five-beat-spine tension-detail-pacing information-release heia delivery repurposing examples provenance; do
+  [ -f "$ROOT/skills/storytelling-content/references/$reference.md" ] || fail "missing storytelling reference $reference"
 done
 
 for script in install.sh uninstall.sh verify-install.sh; do
   [ -x "$ROOT/scripts/$script" ] || fail "scripts/$script is not executable"
 done
 
-for mode in auto review-only hook-only anti-slop-only voice-only end-to-end; do
+for mode in auto review-only story-structure-only hook-only anti-slop-only voice-only end-to-end; do
   grep -Fq "$mode" "$ROOT/skills/review-rewrite-content/SKILL.md" || fail "missing mode $mode"
 done
 
@@ -28,7 +32,7 @@ for heading in "Masalah" "Solusi" "Before" "After" "Cocok Buat Siapa" "Cara Kerj
 done
 
 if rg -n '\[TODO|TODO:|YOUR[-_ ]|CHANGEME|example\.com' "$ROOT" \
-  -g '!tests/verify-repo.sh' -g '!*.md~' >/dev/null; then
+  -g '!tests/verify-repo.sh' -g '!docs/superpowers/**' -g '!*.md~' >/dev/null; then
   fail "placeholder text found"
 fi
 
@@ -44,11 +48,12 @@ assert all(isinstance(p, str) and 0 < len(p) <= 128 for p in prompts)
 PY
 
 [ ! -e "$ROOT/skills/hook-gokil/E-book WTF HOOK.md" ] || fail "source ebook must not be published"
+[ ! -e "$ROOT/skills/storytelling-content/E-Book the Art of Story Telling 13.54.44_protected_unlocked.md" ] || fail "storytelling source ebook must not be published"
 if find "$ROOT/skills/hook-gokil" -type f -size +250k | grep -q .; then
   fail "unexpected large source artifact in hook-gokil"
 fi
 if rg -n '/home/|/Users/|ai-builders-id-kelas-agent|documents/\[2\] Areas/konten-studio-skills' \
-  "$ROOT" -g '!tests/verify-repo.sh' >/dev/null; then
+  "$ROOT" -g '!tests/verify-repo.sh' -g '!docs/superpowers/**' >/dev/null; then
   fail "private or machine-specific content found"
 fi
 

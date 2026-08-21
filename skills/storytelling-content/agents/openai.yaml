@@ -1,0 +1,4 @@
+interface:
+  display_name: "Storytelling Content"
+  short_description: "Susun cerita kuat tanpa mengarang fakta."
+  default_prompt: "Ubah bahan ini menjadi cerita yang terstruktur dan tetap fact-locked."

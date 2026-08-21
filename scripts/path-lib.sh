@@ -34,14 +34,14 @@ validate_manifest() {
       method=$4; next
     }
     NF != 4 { exit 11 }
-    $1 !~ /^(review-rewrite-content|hook-gokil|wtf-hook|no-ai-slop|tutur-jabodetabek-urban)$/ { exit 12 }
+    $1 !~ /^(review-rewrite-content|storytelling-content|hook-gokil|wtf-hook|no-ai-slop|tutur-jabodetabek-urban)$/ { exit 12 }
     seen[$1]++ != 0 { exit 13 }
     $2 != dest "/" $1 { exit 14 }
     $3 != method { exit 15 }
     $4 !~ /^[0-9a-f]{64}$/ { exit 16 }
     END {
-      if (NR != 5) exit 17
-      if (!seen["review-rewrite-content"] || !seen["no-ai-slop"] || !seen["tutur-jabodetabek-urban"]) exit 18
+      if (NR != 6) exit 17
+      if (!seen["review-rewrite-content"] || !seen["storytelling-content"] || !seen["no-ai-slop"] || !seen["tutur-jabodetabek-urban"]) exit 18
       if ((seen["hook-gokil"] ? 1 : 0) + (seen["wtf-hook"] ? 1 : 0) != 1) exit 19
     }
   ' "$MANIFEST" || {

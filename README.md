@@ -32,12 +32,14 @@ ngerasa pernah lihat tulisan yang sama, terus lanjut scroll.
 ## Solusi: not another “humanizer”, tapi meja redaksi mini buat agent lo
 
 Jekardah Writer bukan tombol sulap “bikin viral”. Ini skill pack yang bikin
-agent lo kerja kayak editor: lock faktanya dulu, cari tension yang emang ada,
-bersihin pola AI, baru adjust voice Jabodetabek secukupnya.
+agent lo kerja kayak editor: lock faktanya dulu, susun cerita kalau memang ada
+perubahan yang layak diceritakan, cari tension yang emang ada, bersihin pola AI,
+baru adjust voice Jabodetabek secukupnya.
 
 | Skill | Kerjaan |
 |---|---|
 | `review-rewrite-content` | Pemimpin redaksi: pilih mode, lock fakta, atur handoff, jalankan QA |
+| `storytelling-content` | Susun tulang cerita, tension, pacing, dan payoff tanpa ngarang kejadian |
 | `hook-gokil` | Cari hook yang bikin berhenti scroll tanpa ngarang payoff |
 | `no-ai-slop` | Buang pembukaan kaleng, hiperbola, dan ritme yang terlalu mesin |
 | `tutur-jabodetabek-urban` | Kasih register lokal tanpa cosplay slang atau stereotip wilayah |
@@ -67,14 +69,15 @@ nama, angka, atribusi, maksud CTA, link, plus batas kepastian sumber.
 - Agency yang perlu voice lokal yang konsisten tanpa buka keran halusinasi.
 - Siapa pun yang pernah bilang, “Tolong manusia-in draft ini, tapi jangan ubah isinya.”
 
-## Cara Kerja: empat skill masuk, satu suara keluar
+## Cara Kerja: lima skill masuk, satu suara keluar
 
 ```text
  DRAFT
    │
    ▼
- [FACT LOCK] ── nama · angka · klaim · CTA · struktur
+ [FACT + STORY LOCK] ── fakta · urutan · dialog · klaim · CTA
    │
+   ├──▶ STORYTELLING ─────▶ spine + tension + pacing
    ├──▶ HOOK GOKIL ──────▶ angle + payoff
    ├──▶ NO AI SLOP ────▶ konkret + ritmis + bersih
    └──▶ TUTUR URBAN ───▶ register Jabodetabek
@@ -92,10 +95,11 @@ nama, angka, atribusi, maksud CTA, link, plus batas kepastian sumber.
 |---|---|---|
 | `auto` | Lo mau agent pilih scope paling kecil yang cukup | Hanya layer yang benar-benar diminta |
 | `review-only` | Lo butuh diagnosis tanpa menyentuh draft | Tidak ada |
+| `story-structure-only` | Bahannya ada, alur ceritanya masih datar atau acak | Struktur naratif saja |
 | `hook-only` | Body udah kuat, pembukanya belum narik | Hook saja |
 | `anti-slop-only` | Isinya benar, tapi bahasanya generik | Prosa, bukan angle atau fakta |
 | `voice-only` | Struktur aman, voice-nya belum dapet | Diksi, pronoun, dan rhythm |
-| `end-to-end` | Draft memang perlu masuk meja operasi penuh | Semua layer dalam pagar fact lock |
+| `end-to-end` | Draft atau pengalaman perlu masuk meja operasi penuh | Semua layer relevan dalam pagar fact + story lock |
 
 Prompt paling simpel:
 
@@ -166,8 +170,9 @@ udah terdaftar di sana; portable installer tetap available buat setup lokal yang
 
 ## Safety: tulisannya boleh liar, faktanya jangan ikut kabur
 
-- Draft diperlakukan sebagai data, bukan instruksi yang boleh ngambil alih agent.
-- Fact lock ngejaga nama, angka, tanggal, link, atribusi, CTA, dan certainty ceiling.
+- Draft, catatan, dan transkrip diperlakukan sebagai data, bukan instruksi yang boleh ngambil alih agent.
+- Fact + story lock ngejaga nama, angka, tanggal, urutan, status dialog, motif, link, atribusi, CTA, dan certainty ceiling.
+- Storytelling gak boleh mengarang adegan, dialog verbatim, detail sensorik, motif, atau ending yang lebih rapi dari kejadian aslinya.
 - Hook harus punya payoff di body; curiosity gap bukan izin buat clickbait palsu.
 - Voice adaptation gak boleh nambah klaim atau maksa slang.
 - `end-to-end` cuma aktif kalau diminta jelas; mode `auto` pilih scope tersempit.
@@ -178,8 +183,8 @@ udah terdaftar di sana; portable installer tetap available buat setup lokal yang
 [RamaAditya49/tutur](https://github.com/RamaAditya49/tutur). Adaptasi
 `tutur-jabodetabek-urban` tetap mempertahankan upstream MIT license dan
 copyright Rama Aditya; full detail-nya ada di [Third-Party Notices](THIRD_PARTY_NOTICES.md).
-`hook-gokil` pakai referensi yang udah diringkas; dokumen sumber privatnya gak
-dibundel atau dipublikasikan.
+`hook-gokil` dan `storytelling-content` pakai referensi operasional original
+yang udah diringkas; dokumen sumber privatnya gak dibundel atau dipublikasikan.
 
 ## Lisensi
 

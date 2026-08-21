@@ -12,13 +12,14 @@ check_agent() {
   home="$TMP/$agent-home"
   mkdir -p "$home"
   HOME="$home" "$ROOT/scripts/install.sh" --agent "$agent" --scope user --copy >/dev/null
-  for skill in review-rewrite-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
+  for skill in review-rewrite-content storytelling-content hook-gokil no-ai-slop tutur-jabodetabek-urban; do
     [ -f "$home/$expected/$skill/SKILL.md" ] || fail "$agent did not install $skill"
   done
   HOME="$home" "$ROOT/scripts/verify-install.sh" --agent "$agent" --scope user >/dev/null
   printf 'unrelated\n' > "$home/$expected/unrelated.txt"
   HOME="$home" "$ROOT/scripts/uninstall.sh" --agent "$agent" --scope user >/dev/null
   [ ! -e "$home/$expected/review-rewrite-content" ] || fail "$agent uninstall left files"
+  [ ! -e "$home/$expected/storytelling-content" ] || fail "$agent uninstall left storytelling-content"
   [ -f "$home/$expected/unrelated.txt" ] || fail "$agent uninstall removed unrelated files"
 }
 
@@ -41,11 +42,13 @@ dry="$TMP/dry-home"
 mkdir -p "$dry"
 HOME="$dry" "$ROOT/scripts/install.sh" --agent codex --scope user --dry-run >/dev/null
 [ ! -e "$dry/.codex" ] || fail "dry-run changed filesystem"
+HOME="$dry" "$ROOT/scripts/install.sh" --agent codex --scope user --dry-run | grep -Fq 'five skills' || fail "dry-run did not report five skills"
 
 project="$TMP/project"
 mkdir -p "$project"
 HOME="$TMP/project-home" "$ROOT/scripts/install.sh" --agent gemini --scope project --prefix "$project" --copy >/dev/null
 [ -f "$project/.gemini/skills/review-rewrite-content/SKILL.md" ] || fail "project scope ignored prefix"
+[ -f "$project/.gemini/skills/storytelling-content/SKILL.md" ] || fail "project scope omitted storytelling-content"
 
 modified="$TMP/modified-home"
 mkdir -p "$modified"
