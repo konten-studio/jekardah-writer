@@ -1,13 +1,17 @@
 {
   "name": "jekardah-writer",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Workflow menulis dan me-review konten dengan struktur cerita, hook kuat, bahasa natural, dan tutur Jabodetabek — installable lewat npx.",
   "bin": {
     "jekardah-writer": "bin/cli.js"
   },
+  "scripts": {
+    "test": "sh tests/install-fixtures.sh && sh tests/cli-fixtures.sh"
+  },
   "files": [
     "bin/",
     "skills/",
+    "CHANGELOG.md",
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"
@@ -23,7 +27,8 @@
     "hooks",
     "anti-ai-slop",
     "claude-skill",
-    "ai-skill"
+    "ai-skill",
+    "slop-radar"
   ],
   "author": "Konten Studio",
   "license": "MIT",

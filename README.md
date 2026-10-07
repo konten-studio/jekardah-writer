@@ -99,6 +99,35 @@ nama, angka, atribusi, maksud CTA, link, plus batas kepastian sumber.
  [FACT LOCK] ──▶ CONTENT AUDIT ──▶ skor read-only, gak masuk pipeline mutasi
 ```
 
+## Slop Radar: cek draft dalam 1 detik, tanpa agent
+
+Baru di v0.2.0. Sebelum nyerahin draft ke agent, scan dulu di terminal:
+
+```bash
+npx jekardah-writer check draft.md
+pbpaste | npx jekardah-writer check -
+```
+
+```text
+Slop Radar: draft.md (52 kata)
+
+  3:1     [tinggi] Canned opening: "Di era digital"
+          -> Mulai langsung dari klaim konkret, adegan, tension, atau aksi.
+  3:65    [sedang] Empty abstraction: "merupakan salah satu"
+          -> Sebut siapa melakukan apa, pakai apa, dan kenapa itu penting.
+  13:1    [sedang] Generic CTA: "Bagaimana menurut kalian?"
+          -> Ajukan satu pertanyaan yang bisa dijawab dan nyambung ke tension draft.
+
+Skor: 30/100 (banyak pola template)
+```
+
+- Jalan offline, gak ngirim draft ke mana pun, dan gak ngedit apa pun.
+- Code block, inline code, dan URL di-skip.
+- `--json` buat tooling, `--min-score 80` buat gate di CI atau pre-commit (exit 1 kalau di bawah skor).
+
+Ini sinyal heuristik, bukan vonis: skill `no-ai-slop` tetap yang mutusin apakah
+sebuah pola beneran ngerusak draft lo, dan rewrite-nya tetap fact-locked.
+
 ## Mode: gak semua draft perlu dibongkar total
 
 | Mode | Dipakai saat | Yang boleh berubah |
@@ -178,6 +207,14 @@ Sama kayak installer shell: ada `--scope project --prefix <path>`, `--copy` /
 npx jekardah-writer install --agent claude --scope project --prefix .
 npx jekardah-writer verify --agent claude --scope project --prefix .
 npx jekardah-writer uninstall --agent claude --scope project --prefix .
+```
+
+Udah install versi lama? Upgrade tanpa uninstall manual (skill yang lo edit
+lokal gak bakal ditimpa), dan cek isi paketnya:
+
+```bash
+npx jekardah-writer@latest update --agent claude --scope user
+npx jekardah-writer list
 ```
 
 ### 2. Claude Code plugin (native, lewat `/plugin`)

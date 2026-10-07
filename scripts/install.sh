@@ -70,7 +70,7 @@ for skill in review-rewrite-content storytelling-content hook-gokil headline-var
 done
 
 if [ "$DRY_RUN" -eq 1 ]; then
-  printf 'Would install five skills to %s using %s\n' "$dest" "$METHOD"
+  printf 'Would install 8 skills to %s using %s\n' "$dest" "$METHOD"
   exit 0
 fi
 

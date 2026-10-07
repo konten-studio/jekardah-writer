@@ -1,11 +1,18 @@
 {
   "name": "jekardah-writer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Workflow menulis dan me-review konten dengan struktur cerita, hook kuat, bahasa natural, dan tutur Jabodetabek.",
   "author": {
     "name": "Konten Studio"
   },
   "repository": "https://github.com/konten-studio/jekardah-writer",
   "license": "MIT",
-  "keywords": ["writing", "storytelling", "indonesian", "jabodetabek", "hooks", "anti-ai-slop"]
+  "keywords": [
+    "writing",
+    "storytelling",
+    "indonesian",
+    "jabodetabek",
+    "hooks",
+    "anti-ai-slop"
+  ]
 }

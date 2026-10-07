@@ -6,7 +6,7 @@ fail() { printf 'FAIL: %s\n' "$*" >&2; exit 1; }
 
 for file in \
   .codex-plugin/plugin.json .claude-plugin/plugin.json \
-  README.md LICENSE AGENTS.md \
+  README.md LICENSE AGENTS.md CHANGELOG.md bin/cli.js bin/slop-radar.js \
   scripts/install.sh scripts/uninstall.sh scripts/verify-install.sh; do
   [ -f "$ROOT/$file" ] || fail "missing $file"
 done

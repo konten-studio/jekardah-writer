@@ -1,6 +1,6 @@
 {
   "name": "jekardah-writer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Workflow konten dengan struktur cerita, hook kuat, bahasa natural, dan tutur Jabodetabek.",
   "author": {
     "name": "Konten Studio"
@@ -12,7 +12,9 @@
     "longDescription": "Review dan rewrite konten dengan fact dan story lock, struktur naratif, hook kuat, anti-AI-slop, dan register Jabodetabek.",
     "developerName": "Konten Studio",
     "category": "Productivity",
-    "capabilities": ["Write"],
+    "capabilities": [
+      "Write"
+    ],
     "defaultPrompt": [
       "Review, susun, dan rewrite bahan ini dengan mode auto."
     ]

@@ -42,7 +42,7 @@ dry="$TMP/dry-home"
 mkdir -p "$dry"
 HOME="$dry" "$ROOT/scripts/install.sh" --agent codex --scope user --dry-run >/dev/null
 [ ! -e "$dry/.codex" ] || fail "dry-run changed filesystem"
-HOME="$dry" "$ROOT/scripts/install.sh" --agent codex --scope user --dry-run | grep -Fq 'five skills' || fail "dry-run did not report five skills"
+HOME="$dry" "$ROOT/scripts/install.sh" --agent codex --scope user --dry-run | grep -Fq '8 skills' || fail "dry-run did not report 8 skills"
 
 project="$TMP/project"
 mkdir -p "$project"
